@@ -13,6 +13,7 @@ from django.views.generic import (
     CreateView,
     UpdateView,
 )
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from vet.models import PetOwner, Pet
 from vet.forms import PetOwnerForm, PetForm
 
@@ -127,7 +128,7 @@ class PetDetail(DetailView):
     context_object_name = "pet"
 
 
-class OwnersCreate(CreateView):
+class OwnersCreate(PermissionRequiredMixin, CreateView):
     """
     View for create new pet owners
     """
@@ -136,13 +137,14 @@ class OwnersCreate(CreateView):
     # 2. Template
     # 3. Form
     # 4. Success url
+    permission_required = "vet.add_petowner"
     form_class = PetOwnerForm
     model = PetOwner
     template_name = "vet/owners/create.html"
     success_url = reverse_lazy("vet:owners_list")
 
 
-class OwnersUpdate(UpdateView):
+class OwnersUpdate(PermissionRequiredMixin, UpdateView):
     """
     View for update pet owners
     """
@@ -151,13 +153,14 @@ class OwnersUpdate(UpdateView):
     # 2. Template
     # 3. Form
     # 4. Success url
+    permission_required = "vet.change_petowner"
     model = PetOwner
     form_class = PetOwnerForm
     template_name = "vet/owners/update.html"
     success_url = reverse_lazy("vet:owners_list")
 
 
-class PetsCreate(CreateView):
+class PetsCreate(PermissionRequiredMixin, CreateView):
     """
     View for create new pet owners
     """
@@ -166,13 +169,15 @@ class PetsCreate(CreateView):
     # 2. Template
     # 3. Form
     # 4. Success url
+    permission_required = "vet.add_pet"
+
     form_class = PetForm
     model = Pet
     template_name = "vet/pet/create.html"
     success_url = reverse_lazy("vet:pets_list")
 
 
-class PetsUpdate(UpdateView):
+class PetsUpdate(PermissionRequiredMixin, UpdateView):
     """
     View for create new pet owners
     """
@@ -181,6 +186,7 @@ class PetsUpdate(UpdateView):
     # 2. Template
     # 3. Form
     # 4. Success url
+    permission_required = "vet.change_pet"
     form_class = PetForm
     model = Pet
     template_name = "vet/pet/update.html"

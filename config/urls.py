@@ -22,3 +22,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("vet/", include(("vet.urls", "vet"))),
 ]
+
+
+admin.site.index_title = "Dogtor Admin"
+admin.site.site_header = "Dogtor Super Admin"
