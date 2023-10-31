@@ -1,9 +1,11 @@
 """""
 Views for veterinaries
 """ ""
+
+
 from typing import Any
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import ListView
 from vet.models import PetOwner
 
 
@@ -27,20 +29,26 @@ def list_pet_owners(request):
 
 
 # Also you'll need to redefine get_context_data to pass new keys to the context
-class OwnersList(TemplateView):
-    """
-    Listing pet owners list with a class view
-    """
+# class OwnersList(TemplateView):
+#     """
+#     Listing pet owners list with a class view
+#     """
 
+#     template_name = "vet/owners/list.html"
+
+#     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+#         owners = PetOwner.objects.all()
+
+#         # It's always required to extend the context, rather than sending a new
+
+#         context = super().get_context_data()
+
+#         context["owners"] = owners
+
+#         return context
+
+
+class OwnersList(ListView):
+    model = PetOwner
     template_name = "vet/owners/list.html"
-
-    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
-        owners = PetOwner.objects.all()
-
-        # It's always required to extend the context, rather than sending a new custom context
-
-        context = super().get_context_data()
-
-        context["owners"] = owners
-
-        return context
+    context_object_name = "owners"
