@@ -16,9 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from vet.views import list_pet_owners, OwnersList
+from vet.views import list_pet_owners, OwnersList, OwnerDetail
 
 urlpatterns = [
     path("owners/", list_pet_owners),
-    path("class/owners/", OwnersList.as_view()),
+    path("class/owners", OwnersList.as_view()),
+    path("class/owners/<int:pk>/", OwnerDetail.as_view()),
 ]
