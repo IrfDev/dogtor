@@ -76,3 +76,29 @@ class PetsUpdate(PermissionRequiredMixin, UpdateView):
 Way to reuse code and share: properties and methods to class instances.
 
 On views, you can add custom functionallity to your class with Mixins
+
+
+# Admin authentication
+
+## Redirect url's:
+
+````python
+# After login you'll be redirected to:
+LOGIN_REDIRECT_URL = "vet/owners"
+# After logout you'll be redirected to:
+LOGOUT_REDIRECT_URL = "/"
+````
+## Auth urls:
+
+You need to include the admin url's from `django.contrib.auth.urls`:
+
+````python
+urlpatterns=[
+  # ...
+  path("accounts/", include("django.contrib.auth.urls")),
+]
+````
+
+
+
+# Create Custom User Model extended from django.admin
