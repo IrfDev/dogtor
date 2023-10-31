@@ -70,41 +70,61 @@ class OwnerDetail(DetailView):
     context_object_name = "owner"
 
 
-class PetList(TemplateView):
+# class PetList(TemplateView):
+#     """
+#     Listing pets list with a class view
+#     """
+
+#     template_name = "vet/pet/list.html"
+
+#     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+#         pets = Pet.objects.all()
+
+#         # It's always required to extend the context, rather than sending a new
+
+#         context = super().get_context_data()
+
+#         context["pets"] = pets
+
+#         return context
+
+
+class PetList(ListView):
     """
     Listing pets list with a class view
     """
 
     template_name = "vet/pet/list.html"
-
-    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
-        pets = Pet.objects.all()
-
-        # It's always required to extend the context, rather than sending a new
-
-        context = super().get_context_data()
-
-        context["pets"] = pets
-
-        return context
+    model = PetOwner
+    context_object_name = "pets"
 
 
-class PetDetail(TemplateView):
+# class PetDetail(TemplateView):
+#     """
+#     Listing pets list with a class view
+#     """
+
+#     template_name = "vet/pet/detail.html"
+
+#     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+#         # Params are going to be binded to the kwargs
+#         pet = Pet.objects.get(pk=kwargs["pk"])
+
+#         context = super().get_context_data()
+
+#         context["pet"] = pet
+
+#         return context
+
+
+class PetDetail(DetailView):
     """
     Listing pets list with a class view
     """
 
     template_name = "vet/pet/detail.html"
-
-    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
-        # Params are going to be binded to the kwargs
-        pet = Pet.objects.get(pk=kwargs["pk"])
-
-        context = super().get_context_data()
-
-        context["pet"] = pet
-
-        return context
+    model = Pet
+    context_object_name = "pet"
 
 
 class OwnersCreate(CreateView):
