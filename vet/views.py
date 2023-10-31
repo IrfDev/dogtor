@@ -6,7 +6,13 @@ Views for veterinaries
 from typing import Any
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, TemplateView, CreateView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    TemplateView,
+    CreateView,
+    UpdateView,
+)
 from vet.models import PetOwner, Pet
 from vet.forms import PetOwnerForm, PetForm
 
@@ -116,6 +122,21 @@ class OwnersCreate(CreateView):
     success_url = reverse_lazy("vet:owners_list")
 
 
+class OwnersUpdate(UpdateView):
+    """
+    View for update pet owners
+    """
+
+    # 1. Model
+    # 2. Template
+    # 3. Form
+    # 4. Success url
+    model = PetOwner
+    form_class = PetOwnerForm
+    template_name = "vet/owners/update.html"
+    success_url = reverse_lazy("vet:owners_list")
+
+
 class PetsCreate(CreateView):
     """
     View for create new pet owners
@@ -128,4 +149,19 @@ class PetsCreate(CreateView):
     form_class = PetForm
     model = Pet
     template_name = "vet/pet/create.html"
+    success_url = reverse_lazy("vet:pets_list")
+
+
+class PetsUpdate(UpdateView):
+    """
+    View for create new pet owners
+    """
+
+    # 1. Model
+    # 2. Template
+    # 3. Form
+    # 4. Success url
+    form_class = PetForm
+    model = Pet
+    template_name = "vet/pet/update.html"
     success_url = reverse_lazy("vet:pets_list")

@@ -24,6 +24,8 @@ from vet.views import (
     PetList,
     OwnersCreate,
     PetsCreate,
+    OwnersUpdate,
+    PetsUpdate,
 )
 
 urlpatterns = [
@@ -31,7 +33,9 @@ urlpatterns = [
     path("owners/", OwnersList.as_view(), name="owners_list"),
     path("owners/<int:pk>/", OwnerDetail.as_view(), name="owner_detail"),
     path("owners/add/", OwnersCreate.as_view(), name="pets_create"),
+    path("owners/<int:pk>/edit/", OwnersUpdate.as_view(), name="owners_update"),
     path("pets/<int:pk>/", PetDetail.as_view(), name="pets_detail"),
     path("pets/", PetList.as_view(), name="pets_list"),
     path("pets/add/", PetsCreate.as_view(), name="pets_create"),
+    path("pets/<int:pk>/edit/", PetsUpdate.as_view(), name="pets_update"),
 ]

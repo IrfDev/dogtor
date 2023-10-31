@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block title %}
+<title>Post owners</title>
+{% endblock title %} {% block header %}
+<h1>Pets owner detail</h1>
+{% endblock header %} {% block content %}
+<div>
+  <form method="POST" id="new-owner-form">
+    {% csrf_token %} {{ form }} {% comment %}
+    <input
+      type="text"
+      name="first_name"
+      id="owner_first_name"
+      required="required"
+    />
+
+    <input
+      type="text"
+      name="last_name"
+      id="owner_last_name"
+      required="required"
+    />
+
+    <input type="text" name="address" id="owner_address" required="required" />
+
+    <input type="email" name="email" id="" required="required" />
+
+    <input type="tel" name="phone" id="" /> {% endcomment %}
+
+    <button class="">Submit</button>
+  </form>
+</div>
+{% endblock content %}
