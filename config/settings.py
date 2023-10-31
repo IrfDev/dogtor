@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "vet",
     "blog",
+    "authentication",
 ]
 
 MIDDLEWARE = [
@@ -129,3 +130,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = "/vet/owners"
 LOGOUT_REDIRECT_URL = "/"
+
+
+# Auth user
+
+AUTH_USER_MODEL = "authentication.ModUser"
