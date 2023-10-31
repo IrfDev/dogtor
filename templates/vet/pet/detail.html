@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block title %}
+<title>Pets</title>
+{% endblock title %} {% block header %}
+<h1>Pets owners list</h1>
+{% endblock header %} {% block content %}
+<table>
+  <tr>
+    <th>ID</th>
+    <th>type</th>
+    <th>Owner</th>
+  </tr>
+
+  <tr>
+    <td>{{ pet.id }}</td>
+    <td>{{ pet.type }}</td>
+    <td>{{ pet.owner }}</td>
+  </tr>
+</table>
+{% endblock content %}

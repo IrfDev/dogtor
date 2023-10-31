@@ -5,8 +5,8 @@ Views for veterinaries
 
 from typing import Any
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
-from vet.models import PetOwner
+from django.views.generic import ListView, DetailView, TemplateView
+from vet.models import PetOwner, Pet
 
 
 # Generic views
@@ -63,20 +63,43 @@ class OwnerDetail(DetailView):
     context_object_name = "owner"
 
 
-# class OwnersList(TemplateView):
-#     """
-#     Listing pet owners list with a class view
-#     """
+class PetList(TemplateView):
+    """
+    Listing pets list with a class view
+    """
 
-#     template_name = "vet/owners/list.html"
+    template_name = "vet/pet/list.html"
 
-#     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
-#         owners = PetOwner.objects.all()
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        pets = Pet.objects.all()
 
-#         # It's always required to extend the context, rather than sending a new
+        # It's always required to extend the context, rather than sending a new
 
-#         context = super().get_context_data()
+        context = super().get_context_data()
 
-#         context["owners"] = owners
+        context["pets"] = pets
 
-#         return context
+        return context
+
+
+class PetDetail(TemplateView):
+    """
+    Listing pets list with a class view
+    """
+
+    template_name = "vet/pet/detail.html"
+
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        param_key = self.kwargs.get("pk")
+
+        pet = Pet.objects.get(pk=param_key)
+
+        print(pet)
+
+        # It's always required to extend the context, rather than sending a new
+
+        context = super().get_context_data()
+
+        context["pet"] = pet
+
+        return context
