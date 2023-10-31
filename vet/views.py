@@ -5,9 +5,10 @@ Views for veterinaries
 
 from typing import Any
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, TemplateView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, TemplateView, CreateView
 from vet.models import PetOwner, Pet
-
+from vet.forms import PetOwnerForm, PetForm
 
 # Generic views
 
@@ -98,3 +99,33 @@ class PetDetail(TemplateView):
         context["pet"] = pet
 
         return context
+
+
+class OwnersCreate(CreateView):
+    """
+    View for create new pet owners
+    """
+
+    # 1. Model
+    # 2. Template
+    # 3. Form
+    # 4. Success url
+    form_class = PetOwnerForm
+    model = PetOwner
+    template_name = "vet/owners/create.html"
+    success_url = reverse_lazy("vet:owners_list")
+
+
+class PetsCreate(CreateView):
+    """
+    View for create new pet owners
+    """
+
+    # 1. Model
+    # 2. Template
+    # 3. Form
+    # 4. Success url
+    form_class = PetForm
+    model = Pet
+    template_name = "vet/pet/create.html"
+    success_url = reverse_lazy("vet:pets_list")
