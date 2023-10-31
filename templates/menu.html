@@ -1,7 +1,11 @@
 <nav>
   <ul>
     <li>
-      <a href="/vet/owners"> Owners </a>
+      <a href="{% url 'vet:owners_list' %}"> Owners </a>
+    </li>
+
+    <li>
+      <a href="{% url 'vet:pets_list' %}"> Pets </a>
     </li>
   </ul>
 </nav>

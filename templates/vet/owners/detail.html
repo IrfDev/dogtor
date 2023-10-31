@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block title %}
 <title>Pets</title>
 {% endblock title %} {% block header %}
-<h1>Pets owners list</h1>
+<h1>Pets owner detail</h1>
 {% endblock header %} {% block content %}
 <table>
   <tr>
@@ -11,7 +11,9 @@
   </tr>
 
   <tr>
-    <td>{{ owner.id }}</td>
+    <td>
+      <a href="{% url 'vet:owner_detail' pk=owner.id %}"> {{ owner.id }} </a>
+    </td>
     <td>{{ owner.first_name }}</td>
     <td>{{ owner.email }}</td>
   </tr>

@@ -90,13 +90,8 @@ class PetDetail(TemplateView):
     template_name = "vet/pet/detail.html"
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
-        param_key = self.kwargs.get("pk")
-
-        pet = Pet.objects.get(pk=param_key)
-
-        print(pet)
-
-        # It's always required to extend the context, rather than sending a new
+        # Params are going to be binded to the kwargs
+        pet = Pet.objects.get(pk=kwargs["pk"])
 
         context = super().get_context_data()
 

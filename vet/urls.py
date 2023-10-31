@@ -19,9 +19,9 @@ from django.urls import path
 from vet.views import list_pet_owners, OwnersList, OwnerDetail, PetDetail, PetList
 
 urlpatterns = [
-    path("owners/", list_pet_owners),
-    path("class/owners", OwnersList.as_view()),
-    path("class/owners/<int:pk>/", OwnerDetail.as_view()),
-    path("pets/", PetList.as_view()),
-    path("pets/<int:pk>/", PetDetail.as_view()),
+    # path("owners/", list_pet_owners,name="owners"),
+    path("owners/", OwnersList.as_view(), name="owners_list"),
+    path("owners/<int:pk>/", OwnerDetail.as_view(), name="owner_detail"),
+    path("pets/<int:pk>/", PetDetail.as_view(), name="pets_detail"),
+    path("pets/", PetList.as_view(), name="pets_list"),
 ]
