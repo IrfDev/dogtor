@@ -104,3 +104,9 @@ urlpatterns=[
 # Create Custom User Model extended from django.admin
 
 Most of the time the first thing you'll do when  you create a new project is create a custom user model
+
+
+
+# Rest framework
+
+You can include
