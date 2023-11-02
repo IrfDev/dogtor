@@ -50,12 +50,36 @@ class OwnersListSerializer(serializers.ModelSerializer):
         fields = ["first_name", "last_name"]
 
 
-class OwnersDetailSerializer(serializers.ModelSerializer):
-    """Serializer for the of a Pet Owner"""
+# class OwnersDetailSerializer(serializers.ModelSerializer):
+#     """Serializer for the of a Pet Owner"""
 
-    class Meta:
-        model = PetOwner
-        fields = "__all__"
+#     class Meta:
+#         model = PetOwner
+#         fields = "__all__"
+
+
+# class OwnersCreateSerializer(serializers.ModelSerializer):
+#     """Serializer for the of a Pet Owner"""
+
+#     class Meta:
+#         model = PetOwner
+#         fields = ["first_name", "last_name", "email", "address", "phone"]
+
+
+# class OwnersDestroySerializer(serializers.ModelSerializer):
+#     """Serializer for destroying a Pet Owner"""
+
+#     class Meta:
+#         model = PetOwner
+#         fields = "__all__"
+
+
+# class OwnersCreateSerializer(serializers.ModelSerializer):
+#     """Serializer for the of a Pet Owner"""
+
+#     class Meta:
+#         model = PetOwner
+#         fields = ["first_name", "last_name", "email", "address", "phone"]
 
 
 class OwnersCreateSerializer(serializers.ModelSerializer):
@@ -66,17 +90,9 @@ class OwnersCreateSerializer(serializers.ModelSerializer):
         fields = ["first_name", "last_name", "email", "address", "phone"]
 
 
-class OwnersDestroySerializer(serializers.ModelSerializer):
+class OwnersUpdateDestroyDetailSerializer(serializers.ModelSerializer):
     """Serializer for destroying a Pet Owner"""
 
     class Meta:
         model = PetOwner
         fields = "__all__"
-
-
-class OwnersUpdateSerializer(serializers.ModelSerializer):
-    """Serializer for the of a Pet Owner"""
-
-    class Meta:
-        model = PetOwner
-        fields = ["first_name", "last_name", "email", "address", "phone"]
