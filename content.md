@@ -109,4 +109,13 @@ Most of the time the first thing you'll do when  you create a new project is cre
 
 # Rest framework
 
-You can include
+You can include views, serializers and urls
+
+Views you can include viewsets for default API documentation and management. 
+
+You can also use generic views, just as you can with 
+
+[Summarized docs on classes for Django](https://www.cdrf.co/)
+
+Serializers how are you resolving the different models
+
